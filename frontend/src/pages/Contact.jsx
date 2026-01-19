@@ -108,9 +108,9 @@ function Contact() {
       <div className="mt-24 text-center flex flex-col items-center">
         <ScrollFloat
           textClassName="
-    text-[42px] sm:text-[64px] md:text-[140px]
+    text-[42px] sm:text-[64px] md:text-[96px] lg:text-[140px]
+
     font-bold
-    whitespace-nowrap
     leading-none
     bg-gradient-to-r from-white via-purple-300 to-blue-400
     text-transparent bg-clip-text

@@ -11,14 +11,15 @@ export default function Hero() {
       className="min-h-screen w-full bg-black text-white 
                         px-6 sm:px-8 md:px-20 
                         py-20 md:py-24 
-                        flex flex-col md:flex-row 
+                        flex flex-col lg:flex-row
                         gap-14 md:gap-16 
                         justify-between items-center"
     >
       {/* LEFT SECTION */}
       <div className="max-w-2xl text-center md:text-left">
         <h1
-          className="text-[44px] sm:text-[55px] md:text-[90px] 
+          className="text-[44px] sm:text-[55px] md:text-[64px] lg:text-[90px]
+ 
                        font-extrabold leading-[1.1]"
         >
           <span
@@ -51,7 +52,8 @@ export default function Hero() {
 
       {/* RIGHT CARD */}
       <div
-        className="w-full max-w-[360px] sm:max-w-[400px] md:w-[420px]
+        className="w-full max-w-[360px] sm:max-w-[400px] lg:w-[420px]
+
                    bg-gradient-to-b from-[#0f121a] to-[#1a0f25]
                    border border-white/10 rounded-3xl backdrop-blur-2xl
                    shadow-[0_0_40px_-10px_rgba(120,0,255,0.4)]
