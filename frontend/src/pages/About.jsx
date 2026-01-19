@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Ballpit from '../components/Ballpit.jsx';
 import Hero from "../components/Hero.jsx";
 import { Link } from "react-router-dom";
@@ -8,6 +8,27 @@ import Contact from "./Contact.jsx";
 
 
 function About() {
+
+   const [ballCount, setBallCount] = useState(100);
+
+   
+  useEffect(() => {
+    const updateBallCount = () => {
+      if (window.innerWidth < 640) {
+        setBallCount(40);        // mobile
+      } else if (window.innerWidth < 1024) {
+        setBallCount(70);        // tablet
+      } else {
+        setBallCount(100);       // desktop
+      }
+    };
+
+    updateBallCount();
+    window.addEventListener("resize", updateBallCount);
+
+    return () => window.removeEventListener("resize", updateBallCount);
+  }, []); 
+
   return (
     <>
     <div className="relative w-full h-screen overflow-hidden">
@@ -26,13 +47,14 @@ function About() {
     overflow: "hidden",
   }}
 >
-  <Ballpit
-    count={100}
-    gravity={0.05}
-    friction={0.9975}
-    wallBounce={0.95}
-    followCursor={true}
-  />
+ <Ballpit
+  count={ballCount}
+  gravity={0.05}
+  friction={0.9975}
+  wallBounce={0.95}
+  followCursor={true}
+/>
+
 </div>
 
 

@@ -724,7 +724,6 @@ function createBallpit(e, t = {}) {
     }
   };
 }
-
 const Ballpit = ({ className = '', followCursor = true, ...props }) => {
   const canvasRef = useRef(null);
   const spheresInstanceRef = useRef(null);
@@ -733,17 +732,28 @@ const Ballpit = ({ className = '', followCursor = true, ...props }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    spheresInstanceRef.current = createBallpit(canvas, { followCursor, ...props });
+    const isMobile = window.innerWidth < 768;
+
+    spheresInstanceRef.current = createBallpit(canvas, {
+      followCursor,
+      count: isMobile ? 100 : 200, // responsive performance
+      ...props
+    });
 
     return () => {
-      if (spheresInstanceRef.current) {
-        spheresInstanceRef.current.dispose();
-      }
+      spheresInstanceRef.current?.dispose();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <canvas className={`${className} w-full h-full`} ref={canvasRef} />;
+  return (
+    <div className={`relative w-full h-full ${className}`}>
+      <canvas
+        ref={canvasRef}
+        className="absolute inset-0 w-full h-full"
+      />
+    </div>
+  );
 };
 
 export default Ballpit;
