@@ -1,0 +1,82 @@
+import { useEffect, useMemo, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
+
+const ScrollFloat = ({
+  children,
+  scrollContainerRef,
+  containerClassName = "",
+  textClassName = "",
+  animationDuration = 1,
+  ease = "back.inOut(2)",
+  scrollStart = "center bottom+=50%",
+  scrollEnd = "bottom bottom-=40%",
+  stagger = 0.03,
+}) => {
+  const containerRef = useRef(null);
+
+ const splitText = useMemo(() => {
+  const text = typeof children === "string" ? children : "";
+  return text.split("").map((char, index) => (
+    <span
+      className={`inline-block word ${textClassName}`}
+      key={index}
+    >
+      {char === " " ? "\u00A0" : char}
+    </span>
+  ));
+}, [children, textClassName]);
+
+
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const scroller =
+      scrollContainerRef && scrollContainerRef.current
+        ? scrollContainerRef.current
+        : window;
+
+    // FIXED: animate only letters
+    const charElements = el.querySelectorAll(".word");
+
+    gsap.fromTo(
+      charElements,
+      {
+        opacity: 0,
+        yPercent: 120,
+        scaleY: 2.3,
+        scaleX: 0.7,
+        transformOrigin: "50% 0%",
+      },
+      {
+        duration: animationDuration,
+        ease,
+        opacity: 1,
+        yPercent: 0,
+        scaleY: 1,
+        scaleX: 1,
+        stagger,
+        scrollTrigger: {
+          trigger: el,
+          scroller,
+          start: scrollStart,
+          end: scrollEnd,
+          scrub: true,
+        },
+      }
+    );
+  }, []);
+
+  return (
+    <h2 ref={containerRef} className={`my-5 overflow-hidden ${containerClassName}`}>
+      <span className={`inline-block leading-[1.5] ${textClassName}`}>
+        {splitText}
+      </span>
+    </h2>
+  );
+};
+
+export default ScrollFloat;
