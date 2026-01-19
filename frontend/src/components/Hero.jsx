@@ -47,8 +47,8 @@ export default function Hero() {
           fast, reliable user experiences. I also work with Java, C, Git, and
           API testing tools like Postman and Requestly, enabling me to deliver
           robust, production-ready solutions across the full stack.
-          <br /> — focused on **modern UI engineering, API design, database
-          architecture**, and delivering exceptional **developer experience**.
+          <br /> — focused on "modern UI engineering, API design, database
+          architecture", and delivering exceptional "developer experience".
         </p>
       </div>
 
