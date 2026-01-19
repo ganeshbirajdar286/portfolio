@@ -5,21 +5,68 @@ import { Link } from "react-router-dom";
 import Skills from "./Skills.jsx";
 import Projects from "./Projects.jsx";
 import Contact from "./Contact.jsx";
+import useIsMobile from "../components/useIsMobile.js";
 
 function About() {
+  const isMobile = useIsMobile();
+
   return (
     <>
       <div className="relative w-full min-h-screen overflow-hidden">
         {/* Background Orb Effect */}
         <div className="absolute inset-0 -z-10 bg-black">
-          <div className="w-full h-full relative">
-            <Orb
-              hoverIntensity={2}
-              rotateOnHover
-              hue={0}
-              forceHoverState={false}
-              backgroundColor="#000000"
-            />
+          <div className="absolute inset-0 -z-10 overflow-hidden bg-black">
+            {/* Desktop Orb */}
+            {!isMobile && (
+              <div className="w-full h-full relative">
+                <Orb
+                  hoverIntensity={2}
+                  rotateOnHover
+                  hue={0}
+                  forceHoverState={false}
+                  backgroundColor="#000000"
+                />
+              </div>
+            )}
+
+            {/* Mobile Background */}
+            {isMobile && (
+              <>
+               <div className="absolute inset-0 -z-10 bg-black flex items-center justify-center overflow-hidden">
+
+  {/* Outer glow */}
+  <div className="
+    absolute
+    w-[320px] h-[320px]
+    sm:w-[380px] sm:h-[380px]
+    rounded-full
+    bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500
+    blur-3xl
+    opacity-40
+  " />
+
+  {/* Gradient ring */}
+  <div className="
+    relative
+    w-[400px] h-[400px]
+    sm:w-[320px] sm:h-[320px]
+    rounded-full
+    bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500
+    flex items-center justify-center
+  ">
+    {/* Inner cutout */}
+    <div className="
+      w-[380px] h-[380px]
+      sm:w-[280px] sm:h-[280px]
+      rounded-full
+      bg-black
+    " />
+  </div>
+
+</div>
+
+              </>
+            )}
           </div>
         </div>
 
