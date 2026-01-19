@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import Swasthya from "../assets/Swasthya.png"
-import Whatsapp from "../assets/Whatsapp.png";
+import Whatsapp from "../assets/WhatsApp.png";
 
 const projects = [
   {
