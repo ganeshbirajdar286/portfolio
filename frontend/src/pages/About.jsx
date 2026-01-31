@@ -6,6 +6,7 @@ import Skills from "./Skills.jsx";
 import Projects from "./Projects.jsx";
 import Contact from "./Contact.jsx";
 import useIsMobile from "../components/useIsMobile.js";
+import resume from "/Ganesh_resume.pdf";
 
 function About() {
   const isMobile = useIsMobile();
@@ -32,10 +33,10 @@ function About() {
             {/* Mobile Background */}
             {isMobile && (
               <>
-               <div className="absolute inset-0 -z-10 bg-black flex items-center justify-center overflow-hidden">
-
-  {/* Outer glow */}
-  <div className="
+                <div className="absolute inset-0 -z-10 bg-black flex items-center justify-center overflow-hidden">
+                  {/* Outer glow */}
+                  <div
+                    className="
     absolute
     w-[320px] h-[320px]
     sm:w-[380px] sm:h-[380px]
@@ -43,28 +44,31 @@ function About() {
     bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500
     blur-3xl
     opacity-40
-  " />
+  "
+                  />
 
-  {/* Gradient ring */}
-  <div className="
+                  {/* Gradient ring */}
+                  <div
+                    className="
     relative
     w-[400px] h-[400px]
     sm:w-[320px] sm:h-[320px]
     rounded-full
     bg-gradient-to-br from-blue-400 via-purple-500 to-pink-500
     flex items-center justify-center
-  ">
-    {/* Inner cutout */}
-    <div className="
+  "
+                  >
+                    {/* Inner cutout */}
+                    <div
+                      className="
       w-[380px] h-[380px]
       sm:w-[280px] sm:h-[280px]
       rounded-full
       bg-black
-    " />
-  </div>
-
-</div>
-
+    "
+                    />
+                  </div>
+                </div>
               </>
             )}
           </div>
@@ -121,15 +125,17 @@ function About() {
               <Link to="/contact">Contact Me</Link>
             </button>
 
-            <button
-              className="
+            <a href={resume} download="Ganesh_Birajdar_Resume.pdf">
+              <button
+                className="
       px-6 py-3 sm:px-8
       rounded-full border border-gray-400
       text-white font-semibold hover:bg-white/10 transition
     "
-            >
-              My Resume
-            </button>
+              >
+                My Resume
+              </button>
+            </a>
           </div>
         </div>
       </div>
