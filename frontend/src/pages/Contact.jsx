@@ -10,22 +10,36 @@ function Contact() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+
+  const [loading, setLoading] = useState(false);
+  const [status, setStatus] = useState(""); // success / error message
+
   const containerRef = useRef(null);
 
   const onSubmitHandle = async (e) => {
     e.preventDefault();
+
+    setStatus("");
+    setLoading(true);
+
     try {
       const backend = import.meta.env.VITE_BACKEND_URL;
+
       await axios.post(`${backend}/auth/sendEmail`, {
         name,
         email,
         message,
       });
+
       setName("");
       setEmail("");
       setMessage("");
+      setStatus("✅ Message sent successfully!");
     } catch (err) {
       console.error(err);
+      setStatus("❌ Failed to send message. Try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -33,11 +47,7 @@ function Contact() {
     <section className="min-h-screen w-full bg-black text-white flex flex-col items-center px-4 sm:px-6 pt-32 pb-20">
       {/* CONTACT FORM */}
       <form onSubmit={onSubmitHandle} className="w-full flex justify-center">
-        <div
-          className="w-full max-w-3xl bg-[#111] rounded-2xl 
-                        p-6 sm:p-8 md:p-10 
-                        shadow-lg border border-white/10"
-        >
+        <div className="w-full max-w-3xl bg-[#111] rounded-2xl p-6 sm:p-8 md:p-10 shadow-lg border border-white/10">
           {/* Heading */}
           <div ref={containerRef} className="relative flex justify-center">
             <VariableProximity
@@ -64,22 +74,22 @@ function Contact() {
           </a>
 
           {/* Inputs */}
-          <div className="flex flex-col md:flex-row gap-4 mb-4">
+          <div className="flex flex-col md:flex-row gap-4 mb-4 mt-6">
             <input
               type="text"
               placeholder="Name"
               value={name}
-              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 
-                         border border-white/20 text-white"
+              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
               onChange={(e) => setName(e.target.value)}
+              disabled={loading}
             />
             <input
               type="email"
               placeholder="Email"
               value={email}
-              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 
-                         border border-white/20 text-white"
+              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
               onChange={(e) => setEmail(e.target.value)}
+              disabled={loading}
             />
           </div>
 
@@ -87,24 +97,29 @@ function Contact() {
             placeholder="Message"
             rows="5"
             value={message}
-            className="w-full p-3 sm:p-4 rounded-xl bg-black/40 
-                       border border-white/20 text-white"
+            className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
             onChange={(e) => setMessage(e.target.value)}
+            disabled={loading}
           />
 
+          {/* ✅ Status Message */}
+          {status && (
+            <p className="mt-4 text-center text-sm opacity-80">{status}</p>
+          )}
+
+          {/* ✅ Loading Button */}
           <button
-            className="mt-6 w-full py-3 sm:py-4 
-                       text-base sm:text-lg font-semibold 
-                       bg-purple-600 rounded-xl 
-                       hover:bg-purple-700 transition"
+            className={`mt-6 w-full py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl transition cursor-pointer
+              ${loading ? "bg-purple-400 cursor-not-allowed opacity-70" : "bg-purple-600 hover:bg-purple-700"}
+            `}
             type="submit"
+            disabled={loading}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </button>
         </div>
       </form>
 
-      {/* FOOTER */}
       <div className="mt-24 text-center flex flex-col items-center">
         <ScrollFloat
           textClassName="
