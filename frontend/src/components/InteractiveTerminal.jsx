@@ -638,7 +638,6 @@ export default function InteractiveTerminal() {
                 onKeyDown={handleKeyDown}
                 placeholder={isTyping ? "Running command..." : "Type 'help'..."}
                 className="w-full bg-transparent outline-none text-white font-mono placeholder:text-white/30 text-xs sm:text-sm"
-                autoFocus
               />
               <button
                 onClick={() => handleCommand(input)}
