@@ -32,9 +32,18 @@ export default function Navbar() {
           </h1>
 
           {/* Desktop Links */}
-          <ul className="hidden md:flex gap-10 font-medium">
+          <ul className="hidden md:flex gap-8 font-medium">
             <NavLink to="/" className={navLinkClass}>
               About
+            </NavLink>
+            <NavLink to="/experience" className={navLinkClass}>
+              Experience
+            </NavLink>
+            <NavLink to="/hackathon" className={navLinkClass}>
+              Hackathon
+            </NavLink>
+            <NavLink to="/terminal" className={navLinkClass}>
+              Terminal
             </NavLink>
             <NavLink to="/projects" className={navLinkClass}>
               Projects
@@ -54,7 +63,7 @@ export default function Navbar() {
                 <button className="px-6 py-2 rounded-xl 
                                    bg-gradient-to-r from-blue-500 to-purple-600 
                                    text-white font-semibold flex items-center gap-2 
-                                   hover:opacity-90 transition">
+                                   hover:opacity-90 transition cursor-pointer">
                   <span>→</span> Let’s Talk
                 </button>
               </NavLink>
@@ -80,6 +89,15 @@ export default function Navbar() {
             <ul className="flex flex-col gap-5 text-lg">
               <NavLink onClick={() => setOpen(false)} to="/" className={navLinkClass}>
                 About
+              </NavLink>
+              <NavLink onClick={() => setOpen(false)} to="/experience" className={navLinkClass}>
+                Experience
+              </NavLink>
+              <NavLink onClick={() => setOpen(false)} to="/hackathon" className={navLinkClass}>
+                Hackathon
+              </NavLink>
+              <NavLink onClick={() => setOpen(false)} to="/terminal" className={navLinkClass}>
+                Terminal
               </NavLink>
               <NavLink onClick={() => setOpen(false)} to="/projects" className={navLinkClass}>
                 Projects

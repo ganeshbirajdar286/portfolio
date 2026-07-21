@@ -1,6 +1,9 @@
 import React from "react";
 import Orb from "../components/Orb";
 import Hero from "../components/Hero.jsx";
+import ExperienceTimeline from "../components/ExperienceTimeline.jsx";
+import HackathonExperience from "../components/HackathonExperience.jsx";
+import InteractiveTerminal from "../components/InteractiveTerminal.jsx";
 import { Link } from "react-router-dom";
 import Skills from "./Skills.jsx";
 import Projects from "./Projects.jsx";
@@ -74,7 +77,6 @@ function About() {
           </div>
         </div>
 
-        {/* Foreground Content (UNCHANGED) */}
         {/* Foreground Content */}
         <div
           className="
@@ -130,7 +132,7 @@ function About() {
                 className="
       px-6 py-3 sm:px-8
       rounded-full border border-gray-400
-      text-white font-semibold hover:bg-white/10 transition
+      text-white font-semibold hover:bg-white/10 transition cursor-pointer
     "
               >
                 My Resume
@@ -141,6 +143,9 @@ function About() {
       </div>
 
       <Hero />
+      <InteractiveTerminal />
+      <HackathonExperience />
+      <ExperienceTimeline />
       <Skills />
       <Projects />
       <Contact />
