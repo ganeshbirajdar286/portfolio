@@ -6,7 +6,7 @@ import Skills from "./Skills.jsx";
 import Projects from "./Projects.jsx";
 import Contact from "./Contact.jsx";
 import useIsMobile from "../components/useIsMobile.js";
-import resume from "/ganesh-resume.pdf";
+import resume from "/ganesh_resume.pdf";
 
 function About() {
   const isMobile = useIsMobile();
