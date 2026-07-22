@@ -5,8 +5,10 @@ import { Link } from "react-router-dom";
 import VariableProximity from "../components/VariableProximity.jsx";
 import ScrollFloat from "../components/ScrollFloat.jsx";
 import axios from "axios";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 function Contact() {
+  const { isDark } = useTheme();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
@@ -44,10 +46,14 @@ function Contact() {
   };
 
   return (
-    <section className="min-h-screen w-full bg-black text-white flex flex-col items-center px-4 sm:px-6 pt-32 pb-20">
+    <section className={`min-h-screen w-full flex flex-col items-center px-4 sm:px-6 pt-32 pb-20 transition-colors duration-300 ${
+      isDark ? "bg-black text-white" : "bg-white text-slate-900"
+    }`}>
       {/* CONTACT FORM */}
       <form onSubmit={onSubmitHandle} className="w-full flex justify-center">
-        <div className="w-full max-w-3xl bg-[#111] rounded-2xl p-6 sm:p-8 md:p-10 shadow-lg border border-white/10">
+        <div className={`w-full max-w-3xl rounded-2xl p-6 sm:p-8 md:p-10 border transition-all duration-300 ${
+          isDark ? "bg-[#111] border-white/10 shadow-lg text-white" : "bg-white border-2 border-blue-200 shadow-xl shadow-blue-500/10 text-slate-900"
+        }`}>
           {/* Heading */}
           <div ref={containerRef} className="relative flex justify-center">
             <VariableProximity
@@ -61,14 +67,13 @@ function Contact() {
             />
           </div>
 
-          <p className="text-base sm:text-lg opacity-80 text-center mt-3">
+          <p className={`text-base sm:text-lg text-center mt-3 ${isDark ? "opacity-80" : "text-slate-600"}`}>
             Get in touch directly:
           </p>
 
           <a
             href="mailto:ganeshbirajdar286@gmail.com"
-            className="text-blue-400 text-lg font-semibold hover:underline 
-                       block text-center mb-6"
+            className="text-blue-600 text-lg font-semibold hover:underline block text-center mb-6"
           >
             ganeshbirajdar286@gmail.com
           </a>
@@ -79,7 +84,11 @@ function Contact() {
               type="text"
               placeholder="Name"
               value={name}
-              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
+              className={`w-full p-3 sm:p-4 rounded-xl border ${
+                isDark
+                  ? "bg-black/40 border-white/20 text-white"
+                  : "bg-blue-50/50 border-2 border-blue-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 font-medium"
+              }`}
               onChange={(e) => setName(e.target.value)}
               disabled={loading}
             />
@@ -87,7 +96,11 @@ function Contact() {
               type="email"
               placeholder="Email"
               value={email}
-              className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
+              className={`w-full p-3 sm:p-4 rounded-xl border ${
+                isDark
+                  ? "bg-black/40 border-white/20 text-white"
+                  : "bg-blue-50/50 border-2 border-blue-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 font-medium"
+              }`}
               onChange={(e) => setEmail(e.target.value)}
               disabled={loading}
             />
@@ -97,7 +110,11 @@ function Contact() {
             placeholder="Message"
             rows="5"
             value={message}
-            className="w-full p-3 sm:p-4 rounded-xl bg-black/40 border border-white/20 text-white"
+            className={`w-full p-3 sm:p-4 rounded-xl border ${
+              isDark
+                ? "bg-black/40 border-white/20 text-white"
+                : "bg-blue-50/50 border-2 border-blue-200 text-slate-900 placeholder:text-slate-400 focus:border-blue-500 font-medium"
+            }`}
             onChange={(e) => setMessage(e.target.value)}
             disabled={loading}
           />
@@ -109,9 +126,11 @@ function Contact() {
 
           {/* ✅ Loading Button */}
           <button
-            className={`mt-6 w-full py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl transition cursor-pointer
-              ${loading ? "bg-purple-400 cursor-not-allowed opacity-70" : "bg-purple-600 hover:bg-purple-700"}
-            `}
+            className={`mt-6 w-full py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl transition cursor-pointer text-white shadow-md ${
+              loading
+                ? "bg-blue-400 cursor-not-allowed opacity-70"
+                : "bg-blue-600 hover:bg-blue-700 shadow-blue-500/20"
+            }`}
             type="submit"
             disabled={loading}
           >
@@ -122,14 +141,13 @@ function Contact() {
 
       <div className="mt-24 text-center flex flex-col items-center">
         <ScrollFloat
-          textClassName="
+          textClassName={`
     text-[42px] sm:text-[64px] md:text-[96px] lg:text-[140px]
-
     font-bold
     leading-none
-    bg-gradient-to-r from-white via-purple-300 to-blue-400
+    bg-gradient-to-r ${isDark ? "from-white via-purple-300 to-blue-400" : "from-blue-800 via-blue-600 to-sky-500"}
     text-transparent bg-clip-text
-  "
+  `}
         >
           Ganesh Birajdar
         </ScrollFloat>
@@ -139,8 +157,11 @@ function Contact() {
           <Link
             to="https://github.com/ganeshbirajdar286"
             target="_blank"
-            className="p-4 bg-black/40 rounded-2xl border border-white/10 
-                       hover:bg-white/10 transition"
+            className={`p-4 rounded-2xl border transition ${
+              isDark
+                ? "bg-black/40 border-white/10 text-white hover:bg-white/10"
+                : "bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 shadow-sm"
+            }`}
           >
             <FaGithub size={26} />
           </Link>
@@ -148,22 +169,28 @@ function Contact() {
           <Link
             to="https://www.linkedin.com/in/ganesh-fulchand-birajdar/"
             target="_blank"
-            className="p-4 bg-black/40 rounded-2xl border border-white/10 
-                       hover:bg-white/10 transition"
+            className={`p-4 rounded-2xl border transition ${
+              isDark
+                ? "bg-black/40 border-white/10 text-white hover:bg-white/10"
+                : "bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 shadow-sm"
+            }`}
           >
             <FaLinkedinIn size={26} />
           </Link>
 
           <Link
             to="mailto:ganeshbirajdar286@gmail.com"
-            className="p-4 bg-black/40 rounded-2xl border border-white/10 
-                       hover:bg-white/10 transition"
+            className={`p-4 rounded-2xl border transition ${
+              isDark
+                ? "bg-black/40 border-white/10 text-white hover:bg-white/10"
+                : "bg-white border-2 border-blue-200 text-blue-700 hover:bg-blue-50 shadow-sm"
+            }`}
           >
             ✉️
           </Link>
         </div>
 
-        <p className="mt-8 opacity-60 text-sm">© 2025 Ganesh Birajdar</p>
+        <p className={`mt-8 text-sm ${isDark ? "opacity-60" : "text-slate-500"}`}>© 2025 Ganesh Birajdar</p>
       </div>
     </section>
   );

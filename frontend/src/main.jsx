@@ -16,6 +16,7 @@ import Experience from "./pages/Experience.jsx";
 import Hackathon from "./pages/Hackathon.jsx";
 import TerminalPage from "./pages/Terminal.jsx";
 import Layout from "./components/Layout.jsx";
+import { ThemeProvider } from "./context/ThemeContext.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,10 +31,14 @@ const router = createBrowserRouter(
     </Route>
   )
 );
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router}>
-      <App />
-    </RouterProvider>
+    <ThemeProvider>
+      <RouterProvider router={router}>
+        <App />
+      </RouterProvider>
+    </ThemeProvider>
   </StrictMode>
 );
+

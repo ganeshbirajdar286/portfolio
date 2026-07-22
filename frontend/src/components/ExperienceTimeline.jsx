@@ -4,6 +4,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaBriefcase, FaGraduationCap, FaMapMarkerAlt, FaCalendarAlt, FaExpand, FaTimes, FaTrophy } from "react-icons/fa";
 import { SiIeee } from "react-icons/si";
 import ImageSlider from "./ImageSlider";
+import { useTheme } from "../context/ThemeContext.jsx";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -16,7 +17,7 @@ const timelineData = [
     duration: "Hackathon Ops",
     location: "Mumbai, Maharashtra, India · On-site",
     type: "Hackathon Management",
-    icon: <FaTrophy className="text-amber-400 text-lg sm:text-xl" />,
+    icon: <FaTrophy className="text-amber-500 text-lg sm:text-xl" />,
     description:
       "Managed end-to-end hackathon operations in collaboration with the CSI team. Oversaw logistics, team onboarding, technical troubleshooting, judge paneling workflows, and live platform operations to deliver a smooth competition experience for all participating teams.",
     skills: [
@@ -31,8 +32,8 @@ const timelineData = [
       "CSI Hackathon Management - Team & Event Execution (Phase 1)",
       "CSI Hackathon Management - Live Operations & Platform (Phase 2)",
     ],
-    highlightColor: "from-amber-400 via-purple-500 to-pink-500",
-    badgeBorder: "border-amber-500/30",
+    highlightColor: "from-blue-600 via-sky-500 to-blue-400",
+    badgeBorder: "border-blue-500/30",
   },
   {
     id: "ieee-head",
@@ -42,7 +43,7 @@ const timelineData = [
     duration: "2 mos",
     location: "Mumbai, Maharashtra, India · On-site",
     type: "Leadership & Tech",
-    icon: <SiIeee className="text-sky-400 text-xl sm:text-2xl" />,
+    icon: <SiIeee className="text-blue-600 dark:text-sky-400 text-xl sm:text-2xl" />,
     description:
       "As Joint Head of the IEEE Student Branch, I collaborate with the core committee to plan and execute technical events, workshops, hackathons, and speaker sessions. I coordinate with team members, manage technical operations, and drive student technical development.",
     skills: [
@@ -53,7 +54,7 @@ const timelineData = [
     ],
     mediaImage: "/ieee.png",
     mediaTitle: "IEEE Leadership & Technical Roles",
-    highlightColor: "from-sky-400 to-blue-500",
+    highlightColor: "from-sky-500 to-blue-600",
     badgeBorder: "border-sky-500/30",
   },
   {
@@ -64,7 +65,7 @@ const timelineData = [
     duration: "1 yr 1 mo",
     location: "Mumbai, Maharashtra, India · On-site",
     type: "Technical Executive",
-    icon: <FaBriefcase className="text-purple-400 text-lg sm:text-xl" />,
+    icon: <FaBriefcase className="text-blue-500 dark:text-purple-400 text-lg sm:text-xl" />,
     description:
       "As a Technical Executive at the Computer Society of India (CSI) Student Chapter, I contributed to planning and organizing technical events, workshops, and hackathons. I collaborated with the committee to build engagement, solve complex technical tasks, and build modern web solutions.",
     skills: [
@@ -75,8 +76,8 @@ const timelineData = [
     ],
     mediaImage: "/csi.png",
     mediaTitle: "CSI Technical Executive Appointment & Activities",
-    highlightColor: "from-purple-400 to-pink-500",
-    badgeBorder: "border-purple-500/30",
+    highlightColor: "from-blue-700 to-sky-400",
+    badgeBorder: "border-blue-500/30",
   },
   {
     id: "education-sfit",
@@ -86,7 +87,7 @@ const timelineData = [
     duration: "4 yrs",
     location: "Mumbai, Maharashtra, India · On-site",
     type: "Education",
-    icon: <FaGraduationCap className="text-blue-400 text-xl sm:text-2xl" />,
+    icon: <FaGraduationCap className="text-blue-600 dark:text-blue-400 text-xl sm:text-2xl" />,
     description:
       "Pursuing Bachelor of Engineering degree in Information Technology Engineering. Deep diving into Data Structures, Algorithms, Object-Oriented Design, Database Engineering, and Modern Web Architecture.",
     skills: [
@@ -95,12 +96,13 @@ const timelineData = [
       "Web Engineering",
       "Software Engineering",
     ],
-    highlightColor: "from-blue-400 to-indigo-500",
+    highlightColor: "from-blue-600 to-sky-500",
     badgeBorder: "border-blue-500/30",
   },
 ];
 
 export default function ExperienceTimeline() {
+  const { isDark } = useTheme();
   const containerRef = useRef(null);
   const lineRef = useRef(null);
   const cardsRef = useRef([]);
@@ -110,7 +112,6 @@ export default function ExperienceTimeline() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // 1. Line draw animation linked to scroll scrub
       if (lineRef.current && containerRef.current) {
         gsap.fromTo(
           lineRef.current,
@@ -128,7 +129,6 @@ export default function ExperienceTimeline() {
         );
       }
 
-      // 2. Timeline cards & nodes entrance reveal
       cardsRef.current.forEach((card, index) => {
         if (!card) return;
         const node = nodesRef.current[index];
@@ -178,36 +178,48 @@ export default function ExperienceTimeline() {
     <section
       ref={containerRef}
       id="experience"
-      className="relative min-h-screen w-full bg-black text-white px-4 sm:px-6 md:px-12 py-24 overflow-hidden"
+      className={`relative min-h-screen w-full px-4 sm:px-6 md:px-12 py-24 overflow-hidden transition-colors duration-300 ${
+        isDark ? "bg-black text-white" : "bg-white text-slate-900"
+      }`}
     >
       {/* Background Ambient Glows */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-purple-600/10 rounded-full blur-[140px] pointer-events-none" />
-      <div className="absolute bottom-1/4 left-1/4 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className={`absolute top-1/4 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full blur-[140px] pointer-events-none ${
+        isDark ? "bg-purple-600/10" : "bg-blue-400/15"
+      }`} />
+      <div className={`absolute bottom-1/4 left-1/4 w-[400px] h-[400px] rounded-full blur-[120px] pointer-events-none ${
+        isDark ? "bg-blue-600/10" : "bg-sky-400/15"
+      }`} />
 
       {/* Header */}
       <div className="max-w-4xl mx-auto text-center mb-20 relative z-10">
-        <p className="uppercase tracking-[0.25em] text-xs font-semibold text-sky-400 mb-3">
+        <p className="uppercase tracking-[0.25em] text-xs font-semibold text-blue-600 mb-3">
           Timeline & Leadership
         </p>
 
         <h2 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6">
-          <span className="bg-gradient-to-r from-sky-400 via-blue-500 to-purple-500 text-transparent bg-clip-text">
+          <span className={`bg-gradient-to-r ${
+            isDark ? "from-sky-400 via-blue-500 to-purple-500" : "from-blue-700 via-blue-600 to-sky-500"
+          } text-transparent bg-clip-text`}>
             Experience & Journey
           </span>
         </h2>
 
-        <p className="text-base sm:text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">
+        <p className={`text-base sm:text-lg md:text-xl max-w-2xl mx-auto leading-relaxed ${
+          isDark ? "text-white/70" : "text-slate-600"
+        }`}>
           Positions of responsibility, student body leadership, and technical milestones driving web systems and developer communities.
         </p>
       </div>
 
       {/* Timeline Wrapper */}
       <div className="relative max-w-5xl mx-auto z-10">
-        {/* Central Vertical Line (Desktop & Tablet: Center, Mobile: Left) */}
-        <div className="absolute left-4 md:left-1/2 top-0 bottom-0 -translate-x-1/2 w-1 bg-white/10 rounded-full overflow-hidden">
+        {/* Central Vertical Line */}
+        <div className={`absolute left-4 md:left-1/2 top-0 bottom-0 -translate-x-1/2 w-1 rounded-full overflow-hidden ${
+          isDark ? "bg-white/10" : "bg-blue-100"
+        }`}>
           <div
             ref={lineRef}
-            className="w-full h-full bg-gradient-to-b from-sky-400 via-blue-500 to-purple-600 origin-top shadow-[0_0_15px_rgba(59,130,246,0.8)]"
+            className="w-full h-full bg-gradient-to-b from-blue-600 via-blue-500 to-sky-400 origin-top shadow-[0_0_15px_rgba(59,130,246,0.8)]"
           />
         </div>
 
@@ -228,7 +240,9 @@ export default function ExperienceTimeline() {
                   ref={(el) => (nodesRef.current[index] = el)}
                   className="absolute left-4 md:left-1/2 -translate-x-1/2 z-20 flex items-center justify-center"
                 >
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0d111a] border-2 border-purple-500/60 flex items-center justify-center shadow-[0_0_20px_rgba(168,85,247,0.5)] transition-transform hover:scale-110">
+                  <div className={`w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-blue-500 flex items-center justify-center shadow-lg transition-transform hover:scale-110 ${
+                    isDark ? "bg-[#0d111a] shadow-purple-500/50" : "bg-white shadow-blue-500/30"
+                  }`}>
                     {item.icon}
                   </div>
                 </div>
@@ -237,7 +251,11 @@ export default function ExperienceTimeline() {
                 <div className="w-full md:w-[calc(50%-2.5rem)] pl-12 md:pl-0 cursor-pointer">
                   <div
                     ref={(el) => (cardsRef.current[index] = el)}
-                    className="group relative bg-gradient-to-b from-[#0f121a] to-[#1a0f25] border border-white/10 hover:border-purple-500/40 rounded-3xl p-6 sm:p-8 backdrop-blur-2xl shadow-[0_0_30px_-5px_rgba(0,0,0,0.5)] transition-all duration-300 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.3)]"
+                    className={`group relative border rounded-3xl p-6 sm:p-8 backdrop-blur-2xl transition-all duration-300 ${
+                      isDark
+                        ? "bg-gradient-to-b from-[#0f121a] to-[#1a0f25] border-white/10 hover:border-purple-500/40 text-white shadow-[0_0_30px_-5px_rgba(0,0,0,0.5)] hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.3)]"
+                        : "bg-white border-2 border-blue-200 hover:border-blue-400 text-slate-900 shadow-xl shadow-blue-500/10"
+                    }`}
                   >
                     {/* Glowing Top Accent Line */}
                     <div
@@ -246,31 +264,41 @@ export default function ExperienceTimeline() {
 
                     {/* Role Header & Type Badge */}
                     <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
-                      <span className="text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/80">
+                      <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full border ${
+                        isDark ? "bg-white/5 border-white/10 text-white/80" : "bg-blue-50 border-2 border-blue-200 text-blue-800"
+                      }`}>
                         {item.type}
                       </span>
-                      <span className="text-xs text-white/50 flex items-center gap-1.5 bg-black/40 px-3 py-1 rounded-full border border-white/5">
-                        <FaCalendarAlt className="text-sky-400" />
+                      <span className={`text-xs flex items-center gap-1.5 px-3 py-1 rounded-full border ${
+                        isDark ? "text-white/50 bg-black/40 border-white/5" : "text-slate-600 bg-blue-50 border-2 border-blue-200 font-semibold"
+                      }`}>
+                        <FaCalendarAlt className="text-blue-600" />
                         {item.period} ({item.duration})
                       </span>
                     </div>
 
                     {/* Role & Org */}
-                    <h3 className="text-2xl sm:text-3xl font-bold text-white group-hover:text-sky-300 transition-colors">
+                    <h3 className={`text-2xl sm:text-3xl font-bold transition-colors ${
+                      isDark ? "text-white group-hover:text-sky-300" : "text-slate-900 group-hover:text-blue-600"
+                    }`}>
                       {item.role}
                     </h3>
-                    <h4 className="text-lg font-medium text-purple-400 mt-1">
+                    <h4 className="text-lg font-semibold text-blue-600 dark:text-purple-400 mt-1">
                       {item.organization}
                     </h4>
 
                     {/* Location */}
-                    <p className="flex items-center gap-1.5 text-xs sm:text-sm text-white/50 mt-2 mb-4">
-                      <FaMapMarkerAlt className="text-red-400" />
+                    <p className={`flex items-center gap-1.5 text-xs sm:text-sm mt-2 mb-4 ${
+                      isDark ? "text-white/50" : "text-slate-500"
+                    }`}>
+                      <FaMapMarkerAlt className="text-red-500" />
                       {item.location}
                     </p>
 
                     {/* Description */}
-                    <p className="text-sm sm:text-base text-white/75 leading-relaxed mb-6">
+                    <p className={`text-sm sm:text-base leading-relaxed mb-6 ${
+                      isDark ? "text-white/75" : "text-slate-600"
+                    }`}>
                       {item.description}
                     </p>
 
@@ -285,9 +313,11 @@ export default function ExperienceTimeline() {
                       </div>
                     )}
 
-                    {/* Single Attachment / Image Preview if available */}
+                    {/* Single Attachment / Image Preview */}
                     {!item.mediaImages && item.mediaImage && (
-                      <div className="mb-6 rounded-2xl overflow-hidden border border-white/10 bg-black/50 p-2 group/media relative">
+                      <div className={`mb-6 rounded-2xl overflow-hidden border p-2 group/media relative ${
+                        isDark ? "border-white/10 bg-black/50" : "border-2 border-blue-200 bg-blue-50/50"
+                      }`}>
                         <div className="relative aspect-[16/9] w-full rounded-xl overflow-hidden bg-black/80">
                           <img
                             src={item.mediaImage}
@@ -300,7 +330,7 @@ export default function ExperienceTimeline() {
                             </span>
                             <button
                               onClick={() => setSelectedImage(item.mediaImage)}
-                              className="p-2 rounded-lg bg-purple-600/80 hover:bg-purple-600 text-white transition flex items-center gap-1 text-xs"
+                              className="p-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white transition flex items-center gap-1 text-xs cursor-pointer shadow-sm"
                               title="Expand Image"
                             >
                               <FaExpand size={12} />
@@ -312,11 +342,17 @@ export default function ExperienceTimeline() {
                     )}
 
                     {/* Skills Pills */}
-                    <div className="flex flex-wrap gap-2 pt-2 border-t border-white/10">
+                    <div className={`flex flex-wrap gap-2 pt-2 border-t ${
+                      isDark ? "border-white/10" : "border-slate-200"
+                    }`}>
                       {item.skills.map((skill, sIdx) => (
                         <span
                           key={sIdx}
-                          className="text-xs font-medium px-3 py-1 rounded-full bg-blue-500/10 text-sky-300 border border-blue-500/20 hover:bg-blue-500/20 transition-colors"
+                          className={`text-xs font-semibold px-3 py-1 rounded-full border transition-colors ${
+                            isDark
+                              ? "bg-blue-500/10 text-sky-300 border-blue-500/20 hover:bg-blue-500/20"
+                              : "bg-blue-50 text-blue-800 border border-blue-200 hover:bg-blue-100"
+                          }`}
                         >
                           ♦ {skill}
                         </span>
@@ -342,7 +378,7 @@ export default function ExperienceTimeline() {
           >
             <button
               onClick={() => setSelectedImage(null)}
-              className="absolute top-4 right-4 p-3 bg-black/60 hover:bg-white/20 text-white rounded-full transition z-10"
+              className="absolute top-4 right-4 p-3 bg-black/60 hover:bg-white/20 text-white rounded-full transition z-10 cursor-pointer"
             >
               <FaTimes size={18} />
             </button>
