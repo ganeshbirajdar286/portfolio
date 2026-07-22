@@ -73,7 +73,7 @@ export default function Hero() {
           <p className={`text-base sm:text-lg leading-relaxed max-w-2xl ${
             isDark ? "text-white/70" : "text-slate-600"
           }`}>
-            Computer Engineering student building production-ready applications with strong computer science fundamentals. Specialized in{" "}
+            Information Technology Engineering student building production-ready applications with strong computer science fundamentals. Specialized in{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>React.js</strong>,{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>Node.js</strong>,{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>Express</strong>,{" "}
