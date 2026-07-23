@@ -81,7 +81,7 @@ export default function Hero() {
             <strong className={isDark ? "text-white" : "text-slate-900"}>WebRTC</strong>,{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>Redis</strong>, and relational/document databases. Proven track record in student leadership as{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>IEEE Joint Tech Head</strong> and{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>CSI Hackathon Lead</strong>.
+            <strong className={isDark ? "text-white" : "text-slate-900"}>CSI Technical Executive </strong>.
           </p>
 
           {/* Action Buttons Row */}
@@ -170,7 +170,24 @@ export default function Hero() {
                 IEEE Joint Tech Head
               </h3>
               <p className={`text-xs mt-0.5 ${isDark ? "text-white/50" : "text-slate-500 font-medium"}`}>
-                CSI Hackathon Lead
+                 SFIT Mumbai (2026–2027)
+              </p>
+            </div>
+             
+             <div className={`p-4 rounded-2xl border backdrop-blur-md transition text-left ${
+              isDark
+                ? "bg-gradient-to-b from-[#0f121a] to-[#1a0f25] border-white/10 hover:border-purple-500/30 text-white"
+                : "bg-white border-2 border-blue-200/90 shadow-md shadow-blue-500/5 hover:border-blue-400 hover:shadow-lg text-slate-900"
+            }`}>
+              <div className="flex items-center gap-1.5 text-[11px] font-extrabold uppercase tracking-wider text-blue-600 dark:text-purple-400 mb-1">
+                <FaTrophy size={13} />
+                <span>Leadership</span>
+              </div>
+              <h3 className="font-bold text-sm sm:text-base">
+                CSI Technical Executive 
+              </h3>
+              <p className={`text-xs mt-0.5 ${isDark ? "text-white/50" : "text-slate-500 font-medium"}`}>
+                 SFIT Mumbai (2025–2026)
               </p>
             </div>
 
