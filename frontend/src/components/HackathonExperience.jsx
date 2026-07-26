@@ -92,7 +92,7 @@ export default function HackathonExperience() {
                   isDark ? "text-white/60 bg-white/5 border-white/10" : "text-slate-600 bg-blue-50 border-2 border-blue-200 font-semibold"
                 }`}>
                   <FaCalendarAlt className="text-blue-600" />
-                  CSI Event Season
+                  HackX 2.0 • March 2026
                 </span>
                 <span className={`flex items-center gap-1 px-2.5 py-1 rounded-md border ${
                   isDark ? "text-white/60 bg-white/5 border-white/10" : "text-slate-600 bg-blue-50 border-2 border-blue-200 font-semibold"
@@ -103,7 +103,7 @@ export default function HackathonExperience() {
               </div>
 
               <h3 className={`text-2xl sm:text-3xl font-bold mb-2 ${isDark ? "text-white" : "text-slate-900"}`}>
-                Hackathon Management Lead
+                CSI Technical Executive — Hackathon Operations
               </h3>
               <p className="text-blue-600 font-semibold text-sm mb-4">
                 Computer Society of India (CSI SFIT)
@@ -112,7 +112,7 @@ export default function HackathonExperience() {
               <p className={`text-sm sm:text-base leading-relaxed mb-6 ${
                 isDark ? "text-white/80" : "text-slate-600"
               }`}>
-                Spearheaded technical operations, venue coordination, and participant management during high-stakes hackathons. Collaborated closely with the CSI committee to ensure seamless judging workflows, real-time mentor assistance, and flawless event execution.
+                Spearheaded technical operations, venue coordination, and participant management for HackX 2.0. Collaborated closely with the CSI committee to structure judging workflows, deliver real-time mentor support, and execute a seamless competition.
               </p>
             </div>
 
@@ -129,7 +129,7 @@ export default function HackathonExperience() {
               }`}>
                 <li className="flex items-start gap-2.5">
                   <span className="text-blue-600 font-bold mt-0.5">•</span>
-                  <span>Coordinated hackathon logistics, team registrations, and portal setup for participating teams.</span>
+                  <span>Coordinated logistics, portal onboarding, and team registrations for 150+ participants across 40+ competing teams.</span>
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-blue-600 font-bold mt-0.5">•</span>
@@ -137,7 +137,7 @@ export default function HackathonExperience() {
                 </li>
                 <li className="flex items-start gap-2.5">
                   <span className="text-blue-600 font-bold mt-0.5">•</span>
-                  <span>Streamlined judging evaluation rubrics, team pitching order, and final leaderboard announcements.</span>
+                  <span>Streamlined evaluation rubrics and pitching schedules to ensure judging ran without delays across all rounds.</span>
                 </li>
               </ul>
             </div>

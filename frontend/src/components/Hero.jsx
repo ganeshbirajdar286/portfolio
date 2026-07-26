@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import ganeshImg from "../assets/ganesh.jpg";
-import { Link } from "react-router-dom";
 import { FaGithub, FaLinkedinIn, FaDownload, FaCopy, FaCheck, FaGraduationCap, FaTrophy, FaCode } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext.jsx";
 import resume from "/ganesh_resume.pdf";
@@ -51,14 +50,14 @@ export default function Hero() {
           {/* Main Title */}
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight leading-[1.1]">
             <span className={isDark ? "text-white block" : "text-slate-900 block"}>
-              Full Stack &
+              Software Engineer
             </span>
-            <span className={`bg-gradient-to-r ${
+            <span className={`bg-gradient-to-r font-serif text-3xl ${
               isDark
                 ? "from-sky-400 via-blue-500 to-purple-500"
                 : "from-blue-700 via-blue-600 to-sky-500"
             } text-transparent bg-clip-text block mt-1`}>
-              Systems Engineer
+              MERN • AI • DevOps • System Design
             </span>
           </h1>
 
@@ -73,15 +72,14 @@ export default function Hero() {
           <p className={`text-base sm:text-lg leading-relaxed max-w-2xl ${
             isDark ? "text-white/70" : "text-slate-600"
           }`}>
-            Information Technology Engineering student building production-ready applications with strong computer science fundamentals. Specialized in{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>React.js</strong>,{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>Node.js</strong>,{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>Express</strong>,{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>WebSockets</strong>,{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>WebRTC</strong>,{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>Redis</strong>, and relational/document databases. Proven track record in student leadership as{" "}
+            Full-stack engineer specializing in{" "}
+            <strong className={isDark ? "text-white" : "text-slate-900"}>React</strong>,{" "}
+            <strong className={isDark ? "text-white" : "text-slate-900"}>Node.js</strong>, and{" "}
+            <strong className={isDark ? "text-white" : "text-slate-900"}>real-time systems</strong>. Built{" "}
+            <strong className={isDark ? "text-white" : "text-slate-900"}>Video-RAG</strong> (LangChain/RAG-based CLI) and{" "}
+            <strong className={isDark ? "text-white" : "text-slate-900"}>Swasthya</strong> (AI-powered Ayurvedic healthcare platform for Smart India Hackathon) — while leading tech initiatives as{" "}
             <strong className={isDark ? "text-white" : "text-slate-900"}>IEEE Joint Tech Head</strong> and{" "}
-            <strong className={isDark ? "text-white" : "text-slate-900"}>CSI Technical Executive </strong>.
+            <strong className={isDark ? "text-white" : "text-slate-900"}>CSI Technical Executive</strong>.
           </p>
 
           {/* Action Buttons Row */}
@@ -121,19 +119,6 @@ export default function Hero() {
                 </>
               )}
             </button>
-
-            {/* Get in Touch */}
-            <Link
-              to="/contact"
-              className={`px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-2 transition cursor-pointer active:scale-95 shadow-md ${
-                isDark
-                  ? "bg-white text-black hover:bg-gray-200"
-                  : "bg-slate-900 hover:bg-slate-800 text-white"
-              }`}
-            >
-              <span>Get in Touch</span>
-              <span>→</span>
-            </Link>
           </div>
 
           {/* Bottom 3 Feature Cards Grid */}
@@ -170,7 +155,7 @@ export default function Hero() {
                 IEEE Joint Tech Head
               </h3>
               <p className={`text-xs mt-0.5 ${isDark ? "text-white/50" : "text-slate-500 font-medium"}`}>
-                 SFIT Mumbai (2026–2027)
+                SFIT Mumbai (2026–Present)
               </p>
             </div>
              

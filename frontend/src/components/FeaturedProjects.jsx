@@ -20,11 +20,24 @@ const projects = [
     description:
       "An AI-powered health tracking web application featuring WebSocket telemetry feeds, interactive vital charts, smart dietary planning, and direct video consultation with healthcare specialists.",
     image: Swasthya,
-    tech: ["React.js", "WebSockets", "Express.js", "MongoDB", "TailwindCSS", "Node.js","WebRTC","Redis"],
+    video: "/Swathya.mp4",
+    tech: ["React.js", "WebSockets", "Express.js", "MongoDB", "TailwindCSS", "Node.js", "WebRTC", "Redis"],
     link: "https://sih-nu-ten.vercel.app/",
     github: "https://github.com/ganeshbirajdar286/sih",
     category: "Full Stack / HealthTech",
     badgeColor: "from-blue-600 to-sky-500",
+  },
+  {
+    id: "video-rag",
+    title: "Video-RAG",
+    subtitle: "Multimodal Video Search & Intelligence",
+    description:
+      "A Retrieval-Augmented Generation (RAG) system built with LangChain and vector embeddings to search, transcribe, and interactively query video content in real-time.",
+    video: "/video-Rag.mp4",
+    tech: ["Python", "LangChain", "RAG", "LLMs", "Vector DB", "React.js"],
+    github: "https://github.com/ganeshbirajdar286/rag-video",
+    category: "AI / GenAI & RAG",
+    badgeColor: "from-purple-600 to-indigo-500",
   },
   {
     id: "whatsapp",
@@ -33,11 +46,12 @@ const projects = [
     description:
       "A responsive, full-featured web chat application supporting real-time bi-directional messaging with WebSockets, instant message status indicators, active user presences, and rich media communication.",
     image: Whatsapp,
+    video: "/whatsapp.mp4",
     tech: ["React.js", "WebSockets", "Express.js", "MongoDB", "TailwindCSS", "Node.js"],
     link: "https://whatsapp-three-amber.vercel.app/",
     github: "https://github.com/ganeshbirajdar286/whatsapp",
     category: "Real-time Systems",
-    badgeColor: "from-blue-700 to-blue-500",
+    badgeColor: "from-emerald-600 to-teal-500",
   },
 ];
 
@@ -134,7 +148,7 @@ export default function FeaturedProjects() {
             </span>
           </h1>
           <p className={`mt-3 text-base sm:text-lg max-w-xl ${isDark ? "text-white/70" : "text-slate-600"}`}>
-            Explore web applications built with scalable back-end architecture and responsive interactive interfaces.
+            Explore web applications built with scalable back-end architecture and responsive interactive video demos.
           </p>
         </div>
 
@@ -192,32 +206,53 @@ export default function FeaturedProjects() {
             />
 
             <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
-              {/* Left Column: Interactive Image Preview */}
+              {/* Left Column: Interactive Video / Image Preview */}
               <div className="w-full lg:w-1/2 group relative">
                 <div
                   className={`relative rounded-2xl overflow-hidden border shadow-2xl transition-transform duration-500 hover:scale-[1.02] ${
-                    isDark ? "border-white/10 bg-black/60" : "border-2 border-blue-200 bg-slate-50"
+                    isDark ? "border-white/10 bg-black" : "border-2 border-blue-200 bg-slate-900"
                   }`}
                 >
-                  <img
-                    src={currentProject.image}
-                    alt={currentProject.title}
-                    className="w-full h-auto max-h-[380px] object-cover object-top"
-                  />
-                  <div className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent transition-opacity ${
-                    isDark ? "from-black/80 opacity-60 group-hover:opacity-30" : "from-slate-900/40 opacity-30 group-hover:opacity-10"
-                  }`} />
+                  {currentProject.video ? (
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-black flex items-center justify-center">
+                      <video
+                        key={currentProject.id}
+                        src={currentProject.video}
+                        poster={currentProject.image}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        controls
+                        className="w-full h-full object-cover"
+                      />
+                      <div className="absolute top-3 left-3 pointer-events-none z-10 flex items-center gap-2 px-3 py-1 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[11px] font-semibold tracking-wide">
+                        <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        <span>LIVE DEMO VIDEO</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-900">
+                      <img
+                        src={currentProject.image}
+                        alt={currentProject.title}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    </div>
+                  )}
 
-                  {/* Quick Live Preview Badge */}
-                  <a
-                    href={currentProject.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="absolute bottom-4 right-4 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-2 transition shadow-md"
-                  >
-                    <span>Launch Live App</span>
-                    <FaExternalLinkAlt size={12} />
-                  </a>
+                  {/* Quick Live Preview Badge (only if link exists) */}
+                  {currentProject.link && (
+                    <a
+                      href={currentProject.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="absolute bottom-4 right-4 z-20 bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold px-4 py-2 rounded-xl flex items-center gap-2 transition shadow-lg shadow-blue-600/30"
+                    >
+                      <span>Launch Project</span>
+                      <FaExternalLinkAlt size={12} />
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -287,22 +322,24 @@ export default function FeaturedProjects() {
                 <div className={`flex flex-wrap items-center gap-4 pt-4 border-t ${
                   isDark ? "border-white/10" : "border-slate-200"
                 }`}>
-                  <a
-                    href={currentProject.link}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="flex-1 sm:flex-none px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition active:scale-95 cursor-pointer"
-                  >
-                    <span>View Live Project</span>
-                    <FaExternalLinkAlt size={14} />
-                  </a>
+                  {currentProject.link && (
+                    <a
+                      href={currentProject.link}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="flex-1 sm:flex-none px-7 py-3.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 transition active:scale-95 cursor-pointer"
+                    >
+                      <span>View Project</span>
+                      <FaExternalLinkAlt size={14} />
+                    </a>
+                  )}
 
                   {currentProject.github && (
                     <a
                       href={currentProject.github}
                       target="_blank"
                       rel="noreferrer"
-                      className={`p-3.5 rounded-xl border transition active:scale-95 flex items-center gap-2 text-sm ${
+                      className={`p-3.5 rounded-xl border transition active:scale-95 flex items-center gap-2 text-sm font-semibold ${
                         isDark
                           ? "bg-white/5 hover:bg-white/15 border-white/10 text-white"
                           : "bg-white hover:bg-blue-50 border-2 border-blue-200 text-slate-800 shadow-sm"
@@ -310,7 +347,7 @@ export default function FeaturedProjects() {
                       title="View GitHub Repository"
                     >
                       <FaGithub size={18} />
-                      <span className="hidden sm:inline">Code</span>
+                      <span>{currentProject.link ? "Code" : "View Code on GitHub"}</span>
                     </a>
                   )}
                 </div>
@@ -321,7 +358,7 @@ export default function FeaturedProjects() {
           {/* Navigation Controls Bar below Card */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mt-8 px-2">
             {/* Project Selector Dots */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-wrap items-center gap-3">
               {projects.map((proj, idx) => (
                 <button
                   key={proj.id}
@@ -383,28 +420,44 @@ export default function FeaturedProjects() {
         </div>
       ) : (
         /* GRID MODE */
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 z-10 relative">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 z-10 relative">
           {projects.map((proj) => (
             <div
               key={proj.id}
-              className={`group relative border rounded-3xl p-6 sm:p-8 backdrop-blur-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between ${
+              className={`group relative border rounded-3xl p-6 backdrop-blur-2xl shadow-xl transition-all duration-300 hover:-translate-y-1 flex flex-col justify-between ${
                 isDark
                   ? "bg-gradient-to-b from-[#0f121a] to-[#1a0f25] border-white/10 hover:border-purple-500/40 hover:shadow-[0_0_40px_-10px_rgba(168,85,247,0.3)] text-white"
                   : "bg-white border-2 border-blue-200 hover:border-blue-400 shadow-xl shadow-blue-500/10 text-slate-900"
               }`}
             >
-              {/* Image */}
-              <div className={`relative rounded-2xl overflow-hidden border mb-6 aspect-[16/10] ${
-                isDark ? "border-white/10 bg-black/60" : "border-2 border-blue-200 bg-slate-50"
+              {/* Media (Video / Image) */}
+              <div className={`relative rounded-2xl overflow-hidden border mb-6 aspect-[16/10] bg-black ${
+                isDark ? "border-white/10" : "border-2 border-blue-200"
               }`}>
-                <img
-                  src={proj.image}
-                  alt={proj.title}
-                  className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent transition-opacity ${
-                  isDark ? "from-black/80 opacity-60 group-hover:opacity-40" : "from-slate-900/40 opacity-30 group-hover:opacity-10"
-                }`} />
+                {proj.video ? (
+                  <div className="relative w-full h-full">
+                    <video
+                      src={proj.video}
+                      poster={proj.image}
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      controls
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute top-2.5 left-2.5 pointer-events-none z-10 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/70 backdrop-blur-md border border-white/20 text-white text-[10px] font-semibold tracking-wide">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                      <span>DEMO VIDEO</span>
+                    </div>
+                  </div>
+                ) : (
+                  <img
+                    src={proj.image}
+                    alt={proj.title}
+                    className="w-full h-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                  />
+                )}
               </div>
 
               {/* Text info */}
@@ -450,22 +503,24 @@ export default function FeaturedProjects() {
               <div className={`pt-6 mt-6 border-t flex items-center justify-between ${
                 isDark ? "border-white/10" : "border-slate-200"
               }`}>
-                <a
-                  href={proj.link}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold flex items-center gap-2 transition cursor-pointer shadow-md shadow-blue-500/20"
-                >
-                  <span>Live Demo</span>
-                  <FaExternalLinkAlt size={12} />
-                </a>
+                {proj.link && (
+                  <a
+                    href={proj.link}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold flex items-center gap-2 transition cursor-pointer shadow-md shadow-blue-500/20"
+                  >
+                    <span>Project Link</span>
+                    <FaExternalLinkAlt size={12} />
+                  </a>
+                )}
 
                 {proj.github && (
                   <a
                     href={proj.github}
                     target="_blank"
                     rel="noreferrer"
-                    className={`p-2.5 rounded-xl border transition ${
+                    className={`p-2.5 rounded-xl border transition flex items-center gap-2 text-xs font-semibold ${
                       isDark
                         ? "bg-white/5 hover:bg-white/15 border-white/10 text-white"
                         : "bg-white hover:bg-blue-50 border-2 border-blue-200 text-slate-800 shadow-sm"
@@ -473,6 +528,7 @@ export default function FeaturedProjects() {
                     title="View Code on GitHub"
                   >
                     <FaGithub size={18} />
+                    {!proj.link && <span>View Code</span>}
                   </a>
                 )}
               </div>
@@ -483,3 +539,5 @@ export default function FeaturedProjects() {
     </section>
   );
 }
+
+

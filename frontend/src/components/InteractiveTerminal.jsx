@@ -120,7 +120,7 @@ export default function InteractiveTerminal() {
                 <FiAward /> 2. Hackathon Management & Leadership
               </p>
               <p className={`text-xs leading-relaxed ${isDark ? "text-gray-300" : "text-slate-700"}`}>
-                <strong className="text-blue-700 dark:text-amber-400">Hackathon Management Lead @ CSI SFIT:</strong> Managed end-to-end hackathon operations, team onboarding, technical query resolution, judging workflows, and live 24-hour competition platform logistics.
+                <strong className="text-blue-700 dark:text-amber-400">CSI Technical Executive — Hackathon Operations:</strong> Coordinated operations for 150+ participants across 40+ teams during 24-hour hackathon sprints (HackX 2.0). Managed team onboarding, technical support, and delay-free judging workflows.
                 <br />
                 <strong className="text-blue-600 dark:text-sky-400">Joint Tech Head @ IEEE SFIT:</strong> Coordinated technical events, workshops, hackathons, and speaker sessions.
               </p>
@@ -288,10 +288,10 @@ export default function InteractiveTerminal() {
         responseOutput = (
           <div className="my-3 space-y-3 text-xs sm:text-sm">
             <p className={`font-semibold ${isDark ? "text-purple-300" : "text-blue-700"}`}>Featured Projects:</p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
               <div className={`p-3 rounded-xl border space-y-1.5 ${isDark ? "bg-white/5 border-white/10" : "bg-white border-2 border-blue-200"}`}>
                 <span className="text-xs font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-700">Full Stack / HealthTech</span>
-                <h5 className={`font-bold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>Swasthya Healthcare</h5>
+                <h5 className={`font-bold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>Swasthya</h5>
                 <p className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>AI-powered health tracking web app featuring WebSocket feeds, vital charts, and direct video consultation.</p>
                 <div className="pt-1 flex gap-3 text-xs text-blue-600">
                   <a href="https://sih-nu-ten.vercel.app/" target="_blank" rel="noopener noreferrer" className="underline font-semibold">Live Demo ↗</a>
@@ -299,7 +299,15 @@ export default function InteractiveTerminal() {
                 </div>
               </div>
               <div className={`p-3 rounded-xl border space-y-1.5 ${isDark ? "bg-white/5 border-white/10" : "bg-white border-2 border-blue-200"}`}>
-                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-blue-100 text-blue-700">Real-time Systems</span>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-purple-100 text-purple-700">AI / GenAI & RAG</span>
+                <h5 className={`font-bold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>Video-RAG</h5>
+                <p className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>Multimodal video search and intelligence system built with LangChain and vector embeddings.</p>
+                <div className="pt-1 flex gap-3 text-xs text-blue-600">
+                  <a href="https://github.com/ganeshbirajdar286/rag-video" target="_blank" rel="noopener noreferrer" className="underline font-semibold">GitHub ↗</a>
+                </div>
+              </div>
+              <div className={`p-3 rounded-xl border space-y-1.5 ${isDark ? "bg-white/5 border-white/10" : "bg-white border-2 border-blue-200"}`}>
+                <span className="text-xs font-semibold px-2 py-0.5 rounded bg-teal-100 text-teal-700">Real-time Systems</span>
                 <h5 className={`font-bold text-sm ${isDark ? "text-white" : "text-slate-900"}`}>WhatsApp Web</h5>
                 <p className={`text-xs ${isDark ? "text-gray-400" : "text-slate-600"}`}>Full-featured web chat application supporting real-time WebSockets messaging, message statuses, and rich media.</p>
                 <div className="pt-1 flex gap-3 text-xs text-blue-600">
@@ -318,7 +326,7 @@ export default function InteractiveTerminal() {
           <div className={`my-3 p-4 rounded-xl border space-y-2 ${isDark ? "bg-gradient-to-r from-amber-950/40 via-purple-950/40 to-black border-amber-500/30" : "bg-white border-2 border-blue-200"}`}>
             <div className="flex items-center gap-2 text-blue-700 font-bold">
               <FiAward />
-              <span>Hackathon Management Lead & IEEE Joint Tech Head</span>
+              <span>CSI Technical Executive & IEEE Joint Tech Head</span>
             </div>
             <p className={`text-xs sm:text-sm ${isDark ? "text-gray-300" : "text-slate-700"}`}>
               Spearheaded end-to-end hackathon operations at CSI SFIT. Managed team onboarding, venue coordination, judging evaluation rubrics, live platform troubleshooting, and 24-hour sprint support.

@@ -11,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 const timelineData = [
   {
     id: "csi-hackathon",
-    role: "Hackathon Management Lead",
+    role: "CSI Technical Executive — Hackathon Operations",
     organization: "CSI SFIT (Computer Society of India)",
     period: "2025 - Present",
     duration: "Hackathon Ops",
@@ -19,7 +19,7 @@ const timelineData = [
     type: "Hackathon Management",
     icon: <FaTrophy className="text-amber-500 text-lg sm:text-xl" />,
     description:
-      "Managed end-to-end hackathon operations in collaboration with the CSI team. Oversaw logistics, team onboarding, technical troubleshooting, judge paneling workflows, and live platform operations to deliver a smooth competition experience for all participating teams.",
+      "Managed end-to-end technical operations for HackX 2.0 (CSI SFIT), coordinating logistics and onboarding for 150+ participants across 40+ teams during a 24-hour hackathon sprint. Oversaw judge evaluation workflows to ensure judging ran without delays across all rounds.",
     skills: [
       "Hackathon Operations",
       "Event Management",
