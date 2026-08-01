@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import ganeshImg from "../assets/ganesh.jpg";
 import { FaGithub, FaLinkedinIn, FaDownload, FaCopy, FaCheck, FaGraduationCap, FaTrophy, FaCode } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext.jsx";
-import resume from "/ganesh_resume.pdf";
+
+import resume from "cv,pdf"
 
 export default function Hero() {
   const { isDark } = useTheme();
