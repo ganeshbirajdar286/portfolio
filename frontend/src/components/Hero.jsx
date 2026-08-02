@@ -3,12 +3,11 @@ import ganeshImg from "../assets/ganesh.jpg";
 import { FaGithub, FaLinkedinIn, FaDownload, FaCopy, FaCheck, FaGraduationCap, FaTrophy, FaCode } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext.jsx";
 
-import resume from "cv,pdf"
 
 export default function Hero() {
   const { isDark } = useTheme();
   const [copied, setCopied] = useState(false);
-
+  const resume="/cv.pdf";
   const handleCopyEmail = () => {
     navigator.clipboard.writeText("ganeshbirajdar286@gmail.com");
     setCopied(true);
