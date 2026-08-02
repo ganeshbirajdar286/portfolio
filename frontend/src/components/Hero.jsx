@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import ganeshImg from "../assets/ganesh.jpg";
 import { FaGithub, FaLinkedinIn, FaDownload, FaCopy, FaCheck, FaGraduationCap, FaTrophy, FaCode } from "react-icons/fa";
 import { useTheme } from "../context/ThemeContext.jsx";
-import resume from "../assets/cv.pdf";
 
 export default function Hero() {
   const { isDark } = useTheme();
@@ -86,7 +85,7 @@ export default function Hero() {
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-8 w-full">
             {/* Download Resume PDF */}
             <a
-              href={resume}
+              href="cv.pdf"
               download="Ganesh_Birajdar_Resume.pdf"
               className={`px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-2.5 transition-all cursor-pointer active:scale-95 shadow-lg ${
                 isDark
