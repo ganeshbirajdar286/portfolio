@@ -82,7 +82,7 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-3">
             {/* Resume Button */}
             <a
-              href="cv.pdf"
+              href="/cv.pdf"
               download="Ganesh_Birajdar_Resume.pdf"
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 border transition cursor-pointer ${
                 isDark
