@@ -15,7 +15,7 @@ export default function Hero() {
 
   const downloadResume = () => {
   const link = document.createElement("a");
-  link.href = "/cv.pdf";
+  link.href = "/ganesh_resume.pdf";
   link.setAttribute("download", "Ganesh_Birajdar_Resume.pdf");
   document.body.appendChild(link);
   link.click();
