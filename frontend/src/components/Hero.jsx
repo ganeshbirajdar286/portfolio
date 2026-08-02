@@ -13,15 +13,21 @@ export default function Hero() {
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const downloadResume = () => {
-  const link = document.createElement("a");
-  link.href = "/ganesh_resume.pdf";
-  link.setAttribute("download", "Ganesh_Birajdar_Resume.pdf");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
-};
+const downloadResume = async () => {
+  const response = await fetch("/cv.pdf");
+  const blob = await response.blob();
 
+  const url = window.URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Ganesh_Birajdar_Resume.pdf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  window.URL.revokeObjectURL(url);
+};
   return (
     <section
       className={`relative min-h-screen w-full pt-32 pb-20 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden transition-colors duration-300 ${

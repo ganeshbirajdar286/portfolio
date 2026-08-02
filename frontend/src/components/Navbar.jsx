@@ -9,14 +9,20 @@ import { useTheme } from "../context/ThemeContext";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
+const downloadResume = async () => {
+  const response = await fetch("/cv.pdf");
+  const blob = await response.blob();
 
-  const downloadResume = () => {
-  const link = document.createElement("a");
-  link.href = "/ganesh_resume.pdf";
-  link.setAttribute("download", "Ganesh_Birajdar_Resume.pdf");
-  document.body.appendChild(link);
-  link.click();
-  document.body.removeChild(link);
+  const url = window.URL.createObjectURL(blob);
+
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Ganesh_Birajdar_Resume.pdf";
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+
+  window.URL.revokeObjectURL(url);
 };
   
   const navLinkClass = ({ isActive }) =>
