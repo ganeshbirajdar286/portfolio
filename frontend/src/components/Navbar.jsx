@@ -3,12 +3,13 @@ import Magnet from "./Magnet";
 import React, { useState } from "react";
 import { FiMenu, FiX, FiSun, FiMoon, FiFileText } from "react-icons/fi";
 import { useTheme } from "../context/ThemeContext";
+import resume from "../assets/cv.pdf";
 
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
-  const resume = "/cv.pdf"; 
+  
   const navLinkClass = ({ isActive }) =>
     `px-3.5 py-1.5 rounded-full transition-all duration-200 text-sm font-semibold ${
       isActive
