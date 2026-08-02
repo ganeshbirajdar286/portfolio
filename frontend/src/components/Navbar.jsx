@@ -9,6 +9,15 @@ import { useTheme } from "../context/ThemeContext";
 export default function Navbar() {
   const [open, setOpen] = useState(false);
   const { toggleTheme, isDark } = useTheme();
+
+  const downloadResume = () => {
+  const link = document.createElement("a");
+  link.href = "/cv.pdf";
+  link.setAttribute("download", "Ganesh_Birajdar_Resume.pdf");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
   
   const navLinkClass = ({ isActive }) =>
     `px-3.5 py-1.5 rounded-full transition-all duration-200 text-sm font-semibold ${
@@ -81,9 +90,8 @@ export default function Navbar() {
           {/* Desktop Right Controls: Resume, Theme Toggle & Contact Button */}
           <div className="hidden md:flex items-center gap-3">
             {/* Resume Button */}
-            <a
-              href="/cv.pdf"
-              download="Ganesh_Birajdar_Resume.pdf"
+            <button
+             onClick={downloadResume}
               className={`px-3.5 py-2 rounded-xl text-xs font-semibold flex items-center gap-1.5 border transition cursor-pointer ${
                 isDark
                   ? "bg-white/5 border-white/15 text-white hover:bg-white/15"
@@ -92,7 +100,7 @@ export default function Navbar() {
             >
               <FiFileText size={14} className="text-blue-600" />
               <span>Resume</span>
-            </a>
+            </button>
 
             {/* Theme Toggle Button */}
             <button

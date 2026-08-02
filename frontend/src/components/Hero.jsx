@@ -13,6 +13,15 @@ export default function Hero() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const downloadResume = () => {
+  const link = document.createElement("a");
+  link.href = "/cv.pdf";
+  link.setAttribute("download", "Ganesh_Birajdar_Resume.pdf");
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
   return (
     <section
       className={`relative min-h-screen w-full pt-32 pb-20 px-4 sm:px-6 md:px-12 lg:px-20 overflow-hidden transition-colors duration-300 ${
@@ -84,9 +93,8 @@ export default function Hero() {
           {/* Action Buttons Row */}
           <div className="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-8 w-full">
             {/* Download Resume PDF */}
-            <a
-              href="/cv.pdf"
-              download="Ganesh_Birajdar_Resume.pdf"
+            <button
+              onClick={downloadResume}
               className={`px-6 py-3.5 rounded-xl font-semibold text-sm sm:text-base flex items-center gap-2.5 transition-all cursor-pointer active:scale-95 shadow-lg ${
                 isDark
                   ? "bg-gradient-to-r from-blue-500 to-purple-600 text-white hover:opacity-90 shadow-purple-500/25"
@@ -95,7 +103,7 @@ export default function Hero() {
             >
               <FaDownload size={14} />
               <span>Download Resume PDF</span>
-            </a>
+            </button>
 
             {/* Copy Direct Email */}
             <button
