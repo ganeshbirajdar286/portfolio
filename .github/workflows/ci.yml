@@ -1,0 +1,60 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches: [ main, master, dev ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test-frontend:
+    name: Test & Lint (frontend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'PackageManager.NPM'
+
+      - name: Install Dependencies
+        working-directory: frontend
+        run: |
+          npm ci
+
+
+      - name: Run Build
+        working-directory: frontend
+        run: npm run build
+
+
+      - name: Verify Docker Build
+        working-directory: frontend
+        run: docker build -t tmp8nx2nomb-frontend:ci .
+  test-backend:
+    name: Test & Lint (backend)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'PackageManager.NPM'
+
+      - name: Install Dependencies
+        working-directory: backend
+        run: |
+          npm ci
+
+
+
+
+      - name: Verify Docker Build
+        working-directory: backend
+        run: docker build -t tmp8nx2nomb-backend:ci .
