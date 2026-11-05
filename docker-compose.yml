@@ -3,7 +3,7 @@ services:
     build:
       context: frontend
       dockerfile: Dockerfile
-    container_name: tmpn3ef_o0w-frontend
+    container_name: tmpkj814pnk-frontend
     restart: unless-stopped
     ports:
       - "80:80"
@@ -16,7 +16,7 @@ services:
     build:
       context: backend
       dockerfile: Dockerfile
-    container_name: tmpn3ef_o0w-backend
+    container_name: tmpkj814pnk-backend
     restart: unless-stopped
     ports:
       - "3000:3000"
