@@ -1,0 +1,27 @@
+services:
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: tmp8nx2nomb-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - PORT=80
+    env_file:
+      - path: frontend/.env
+        required: false
+  backend:
+    build:
+      context: backend
+      dockerfile: Dockerfile
+    container_name: tmp8nx2nomb-backend
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    env_file:
+      - path: backend/.env
+        required: false
