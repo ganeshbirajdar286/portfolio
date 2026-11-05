@@ -33,7 +33,7 @@ jobs:
 
       - name: Verify Docker Build
         working-directory: frontend
-        run: docker build -t tmp8nx2nomb-frontend:ci .
+        run: docker build -t tmpn3ef_o0w-frontend:ci .
   test-backend:
     name: Test & Lint (backend)
     runs-on: ubuntu-latest
@@ -57,4 +57,4 @@ jobs:
 
       - name: Verify Docker Build
         working-directory: backend
-        run: docker build -t tmp8nx2nomb-backend:ci .
+        run: docker build -t tmpn3ef_o0w-backend:ci .

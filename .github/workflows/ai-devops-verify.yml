@@ -1,6 +1,10 @@
 name: AI DevOps Agent Verification Sandbox
 
 on:
+  push:
+    branches:
+      - 'ai-devops-setup'
+      - 'ai-devops-*'
   workflow_dispatch:
     inputs:
       health_port:
@@ -53,7 +57,13 @@ jobs:
           echo "=== 4. Probing Health Endpoint ==="
 
           PORT="${{ github.event.inputs.health_port }}"
+          if [ -z "$PORT" ]; then
+            PORT="3000"
+          fi
           PATH_URI="${{ github.event.inputs.health_path }}"
+          if [ -z "$PATH_URI" ]; then
+            PATH_URI="/health"
+          fi
           
           if [ -n "$PORT" ]; then
             echo "Waiting for service to accept traffic on http://localhost:$PORT$PATH_URI..."
