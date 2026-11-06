@@ -160,5 +160,5 @@ ghcr.io/${{ github.repository }}:latestghcr.io/${{ github.repository }}:${{ need
         run: |
           echo "Deploying application tag: ${{ needs.prepare.outputs.image_tag }}"
           echo "Target Provider: vercel"
-          echo "Health Check URI: http://localhost:3000/health"
+          echo "Health Check URI: http://localhost:3000/"
           echo "[OK] Deployment successfully triggered for release ${{ needs.prepare.outputs.image_tag }}."
