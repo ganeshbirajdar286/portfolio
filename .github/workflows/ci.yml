@@ -18,7 +18,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'PackageManager.NPM'
+          cache: 'npm'
 
       - name: Install Dependencies
         working-directory: frontend
@@ -33,7 +33,7 @@ jobs:
 
       - name: Verify Docker Build
         working-directory: frontend
-        run: docker build -t tmpn3ef_o0w-frontend:ci .
+        run: docker build -t tmpkj814pnk-frontend:ci .
   test-backend:
     name: Test & Lint (backend)
     runs-on: ubuntu-latest
@@ -45,7 +45,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'PackageManager.NPM'
+          cache: 'npm'
 
       - name: Install Dependencies
         working-directory: backend
@@ -57,4 +57,4 @@ jobs:
 
       - name: Verify Docker Build
         working-directory: backend
-        run: docker build -t tmpn3ef_o0w-backend:ci .
+        run: docker build -t tmpkj814pnk-backend:ci .
