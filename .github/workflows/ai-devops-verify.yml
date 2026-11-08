@@ -10,7 +10,7 @@ on:
       health_port:
         description: 'Exposed port to probe'
         required: false
-        default: '3000'
+        default: '80'
       health_path:
         description: 'Healthcheck HTTP path'
         required: false
@@ -78,7 +78,7 @@ jobs:
             if ! grep -q "^FRONTEND_URL=" .env 2>/dev/null || grep -q "^FRONTEND_URL=$" .env 2>/dev/null; then
               echo "Injecting safe mock fallback for 'FRONTEND_URL'..."
               sed -i '/^FRONTEND_URL=/d' .env 2>/dev/null || true
-              echo "FRONTEND_URL=http://localhost:3000" >> .env
+              echo "FRONTEND_URL=http://localhost:80" >> .env
             fi
           fi
           VAL="$MY_PERSONAL_EMAIL"
@@ -104,11 +104,17 @@ jobs:
             if ! grep -q "^VITE_BACKEND_URL=" .env 2>/dev/null || grep -q "^VITE_BACKEND_URL=$" .env 2>/dev/null; then
               echo "Injecting safe mock fallback for 'VITE_BACKEND_URL'..."
               sed -i '/^VITE_BACKEND_URL=/d' .env 2>/dev/null || true
-              echo "VITE_BACKEND_URL=http://localhost:3000" >> .env
+              echo "VITE_BACKEND_URL=http://localhost:80" >> .env
             fi
           fi
           echo "Configured environment variables in .env:"
           sed 's/=.*/=******/' .env
+          # Propagate .env to service subdirectories if any exist
+          for d in */ ; do
+            if [ -d "$d" ]; then
+              cp .env "$d/.env" 2>/dev/null || true
+            fi
+          done
 
       - name: Validate Docker Compose Configuration
         run: |
@@ -131,7 +137,7 @@ jobs:
 
           PORT="${{ github.event.inputs.health_port }}"
           if [ -z "$PORT" ]; then
-            PORT="3000"
+            PORT="80"
           fi
           PATH_URI="${{ github.event.inputs.health_path }}"
           if [ -z "$PATH_URI" ]; then

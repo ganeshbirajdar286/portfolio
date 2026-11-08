@@ -1,23 +1,23 @@
-# DevOps Configuration for tmpz1jjvqtf
+# DevOps Configuration for ganesh
 
 This repository has been configured automatically by the **AI DevOps Agent**.
 
 ## Architecture Summary
 
 - **Repository Type:** Monorepo
-- **Service `frontend`:**
-  - Framework: `react_vite`
-  - Language: `javascript`
-  - Package Manager: `npm`
-  - Exposed Port: `80`
-  - Recommended Deployment Target: **Vercel**
-
 - **Service `backend`:**
   - Framework: `express`
   - Language: `javascript`
   - Package Manager: `npm`
   - Exposed Port: `3000`
   - Recommended Deployment Target: **Render**
+
+- **Service `frontend`:**
+  - Framework: `react_vite`
+  - Language: `javascript`
+  - Package Manager: `npm`
+  - Exposed Port: `80`
+  - Recommended Deployment Target: **Vercel**
 
 ## Running Locally with Docker Compose
 

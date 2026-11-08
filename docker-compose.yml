@@ -1,22 +1,10 @@
 services:
-  frontend:
-    build:
-      context: frontend
-      dockerfile: Dockerfile
-    container_name: tmpz1jjvqtf-frontend
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    environment:
-      - PORT=80
-    env_file:
-      - path: frontend/.env
-        required: false
+
   backend:
     build:
       context: backend
       dockerfile: Dockerfile
-    container_name: tmpz1jjvqtf-backend
+    container_name: ganesh-backend
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -25,3 +13,17 @@ services:
     env_file:
       - path: backend/.env
         required: false
+  frontend:
+    build:
+      context: frontend
+      dockerfile: Dockerfile
+    container_name: ganesh-frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    environment:
+      - PORT=80
+    env_file:
+      - path: frontend/.env
+        required: false
+
